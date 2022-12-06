@@ -1,4 +1,5 @@
-##General info
+# Dog breeds app
+## General info
 
 App is fetching data from https://dog.ceo/dog-api/ and showing it.
 
