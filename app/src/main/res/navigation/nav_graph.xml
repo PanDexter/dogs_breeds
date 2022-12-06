@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentBreedsList">
+
+    <fragment
+        android:id="@+id/fragmentBreedsList"
+        android:name="com.pandexter.dogsbreed.ui.breedList.BreedListFragment"
+        android:label="BreedListFragment"
+        tools:layout="@layout/fragment_breed_list">
+        <action
+            android:id="@+id/navigateToFavouritePhotos"
+            app:destination="@id/fragmentFavouritePhotos" />
+
+        <action
+            android:id="@+id/navigateToBreedDetails"
+            app:destination="@id/fragmentBreedDetails" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentBreedDetails"
+        android:name="com.pandexter.dogsbreed.ui.breedDetails.BreedDetailsFragment"
+        android:label="BreedDetailsFragment"
+        tools:layout="@layout/fragment_breed_details">
+        <argument
+            android:name="breedName"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentFavouritePhotos"
+        android:name="com.pandexter.dogsbreed.ui.favouritePhotos.FavouritePhotosFragment"
+        android:label="FavouritePhotosFragment"
+        tools:layout="@layout/fragment_favourite_photos" />
+
+</navigation>
