@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -94,4 +95,15 @@ dependencies {
 
     def recyclerViewVersion = "1.2.1"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+
+
+    def coilVersion = "2.0.0"
+    implementation "io.coil-kt:coil:$coilVersion"
+    implementation "io.coil-kt:coil-base:$coilVersion"
+
+    def roomVersion = "2.4.3"
+    implementation "androidx.room:room-common:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 }
