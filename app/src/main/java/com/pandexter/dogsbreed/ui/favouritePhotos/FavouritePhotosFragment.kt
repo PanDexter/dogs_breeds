@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.pandexter.dogsbreed.R
 import com.pandexter.dogsbreed.databinding.FragmentFavouritePhotosBinding
 import com.pandexter.dogsbreed.ui.favouritePhotos.model.BreedSelector
-import com.pandexter.dogsbreed.ui.photos.PhotosAdapter
+import com.pandexter.dogsbreed.ui.breedDetails.PhotosAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +21,7 @@ class FavouritePhotosFragment : Fragment() {
 
     private var _binding: FragmentFavouritePhotosBinding? = null
     private val binding get() = _binding ?: throw Exception()
-    private lateinit var photosAdapter: PhotosAdapter
+    private lateinit var favouritePhotosAdapter: FavouritePhotosAdapter
     private lateinit var spinnerAdapter: ArrayAdapter<BreedSelector>
     private val viewModel: FavouritePhotosViewModel by viewModels()
 
@@ -48,10 +48,10 @@ class FavouritePhotosFragment : Fragment() {
 
     private fun setupView() {
         with(binding.rvBreeds) {
-            photosAdapter = PhotosAdapter { photo, _ ->
+            favouritePhotosAdapter = FavouritePhotosAdapter() { photo, _ ->
                 viewModel.removePhotoFromFavourite(photo)
             }
-            adapter = photosAdapter
+            adapter = favouritePhotosAdapter
             layoutManager = GridLayoutManager(requireContext(), 3)
 
         }
@@ -77,7 +77,7 @@ class FavouritePhotosFragment : Fragment() {
                     BreedSelector.All -> viewModel.state.value.data
                     is BreedSelector.Breed -> viewModel.state.value.data?.filter { it.breedName == spinnerData.name }
                 }
-                photosAdapter.submitList(filteredList)
+                favouritePhotosAdapter.submitList(filteredList)
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {}
@@ -88,7 +88,7 @@ class FavouritePhotosFragment : Fragment() {
     private fun observeState() {
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect {
-                photosAdapter.submitList(it.data)
+                favouritePhotosAdapter.submitList(it.data)
                 setupSpinner(it.breedsList)
             }
         }

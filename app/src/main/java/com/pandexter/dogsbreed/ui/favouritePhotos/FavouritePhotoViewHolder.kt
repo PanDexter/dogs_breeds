@@ -1,13 +1,14 @@
-package com.pandexter.dogsbreed.ui.photos
+package com.pandexter.dogsbreed.ui.favouritePhotos
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.pandexter.dogsbreed.R
-import com.pandexter.dogsbreed.databinding.ItemPhotoBinding
+import com.pandexter.dogsbreed.common.capitalizeFirstLetter
+import com.pandexter.dogsbreed.databinding.ItemPhotoFavouriteBinding
 import com.pandexter.dogsbreed.domain.model.Photo
 
-class PhotoViewHolder(
-    private val binding: ItemPhotoBinding, private val onItemClicked: (Photo, Int) -> Unit?
+class FavouritePhotoViewHolder(
+    private val binding: ItemPhotoFavouriteBinding, private val onItemClicked: (Photo, Int) -> Unit?
 ) : RecyclerView.ViewHolder(binding.root) {
 
 
@@ -30,10 +31,6 @@ class PhotoViewHolder(
         this.item = item
         binding.ivPhoto.load(item.url)
         binding.ivLike.load(if (item.isFavourite) R.drawable.ic_favourite_filled else R.drawable.ic_favourite)
-    }
-
-    fun bindFavouriteState(item: Photo) {
-        this.item = item
-        binding.ivLike.load(if (item.isFavourite) R.drawable.ic_favourite_filled else R.drawable.ic_favourite)
+        binding.tvBreed.text = item.breedName.capitalizeFirstLetter()
     }
 }

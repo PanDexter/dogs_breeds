@@ -25,15 +25,12 @@ class NetworkModule {
     @Singleton
     fun providesClient(
         gson: Gson
-    ): DogsService {
-
-        return Retrofit.Builder()
-            .baseUrl(SERVICE_URL)
-            .client(getClient())
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-            .create(DogsService::class.java)
-    }
+    ): DogsService = Retrofit.Builder()
+        .baseUrl(SERVICE_URL)
+        .client(getClient())
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .build()
+        .create(DogsService::class.java)
 
     private fun getClient(): OkHttpClient =
         OkHttpClient

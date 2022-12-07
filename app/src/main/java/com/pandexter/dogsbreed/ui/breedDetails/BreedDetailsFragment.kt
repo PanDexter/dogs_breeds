@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.pandexter.dogsbreed.databinding.FragmentBreedDetailsBinding
-import com.pandexter.dogsbreed.ui.photos.PhotosAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

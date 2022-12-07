@@ -1,11 +1,10 @@
-package com.pandexter.dogsbreed.ui.photos
+package com.pandexter.dogsbreed.ui.breedDetails
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.pandexter.dogsbreed.databinding.ItemPhotoBinding
-import com.pandexter.dogsbreed.domain.model.Breed
 import com.pandexter.dogsbreed.domain.model.Photo
 
 class PhotosAdapter(
